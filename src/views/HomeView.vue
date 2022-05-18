@@ -56,8 +56,9 @@ export default defineComponent({
   display: flex;
   height: 100%;
   flex-wrap: wrap;
+  margin-bottom: 0;
 
-  @media (max-width: 992px){
+  @media (max-width: 991px){
     & div:first-child {
       margin-bottom: 20px;
     }

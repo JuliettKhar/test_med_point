@@ -45,7 +45,7 @@ import { defineComponent } from '@vue/composition-api';
 import { useResTable } from './composables/useResTable';
 
 export default defineComponent({
-  name: 'resTable',
+  name: 'ResTable',
   props: {
     data: {
       type: Array,
