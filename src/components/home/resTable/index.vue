@@ -41,36 +41,36 @@
 </template>
 
 <script lang="ts">
-import {defineComponent } from '@vue/composition-api';
-import { useResTable } from './composables/useResTable'
+import { defineComponent } from '@vue/composition-api';
+import { useResTable } from './composables/useResTable';
 
 export default defineComponent({
   name: 'resTable',
   props: {
     data: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     pagination: {
       type: Object,
-      required: true
+      required: true,
     },
     loading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(_, { root, emit }) {
-    const { paginateTable } = useResTable(emit, root)
+    const { paginateTable } = useResTable(emit, root);
 
     return {
-      paginateTable
+      paginateTable,
     };
   },
 });
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
 .table {
   &__pagination {
     margin-top: 20px;

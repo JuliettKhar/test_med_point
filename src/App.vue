@@ -18,7 +18,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="less">
 html {
   display: flex;
   height: 100vh;
@@ -43,7 +43,7 @@ body {
   color: #2c3e50;
 }
 </style>
-<style lang="scss">
+<style lang="less">
 .app-main {
   padding: 20px 0 !important;
   overflow-x: hidden !important;

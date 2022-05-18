@@ -29,7 +29,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
 .app-header {
   display: flex;
   justify-content: space-between;

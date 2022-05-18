@@ -22,7 +22,7 @@
 import { defineComponent } from '@vue/composition-api';
 import FilterForm from '../components/home/filterForm/index.vue';
 import ResTable from '../components/home/resTable/index.vue';
-import { useHomeView } from '../components/home/composables/useHomeView'
+import { useHomeView } from '../components/home/composables/useHomeView';
 
 export default defineComponent({
   name: 'HomeView',
@@ -37,7 +37,7 @@ export default defineComponent({
       pagination,
       tableLoader,
       resetFilter,
-      changePage
+      changePage,
     } = useHomeView(root.$route.query);
 
     return {
@@ -46,12 +46,12 @@ export default defineComponent({
       tableLoader,
       getField,
       resetFilter,
-      changePage
-    }
-  }
+      changePage,
+    };
+  },
 });
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
 .home {
   display: flex;
   height: 100%;

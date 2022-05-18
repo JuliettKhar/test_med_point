@@ -1,48 +1,52 @@
 <template>
   <el-form
-    ref="filterForm"
-    :model="formFilters"
-    :rules="rules"
-    label-position="top"
-    class="filter-form"
+    ref='filterForm'
+    :model='formFilters'
+    :rules='rules'
+    label-position='top'
+    class='filter-form'
   >
-    <el-form-item label="Название дороги" prop="title">
+    <el-form-item label='Название дороги' prop='title'>
       <el-input
-        v-model="formFilters.title"
+        v-model.trim='formFilters.title'
         clearable
         @keyup.enter.native="validateField('title')"
-        @clear="clearFilter"
+        @clear='clearFilter'
       />
     </el-form-item>
-    <el-form-item label="РГН" prop="rgn">
-      <el-input v-model="formFilters.rgn" clearable @keyup.enter.native="validateField('rgn')" @clear="clearFilter"/>
+    <el-form-item label='РГН' prop='rgn'>
+      <el-input
+        v-model.trim='formFilters.rgn'
+        clearable
+        @keyup.enter.native="validateField('rgn')"
+        @clear='clearFilter' />
     </el-form-item>
-    <el-form-item label="Городской округ" prop="district_title">
+    <el-form-item label='Городской округ' prop='district_title'>
       <el-select
-        v-model="formFilters.district_title"
-        placeholder="Выберите из списка"
-        class="filter-form__select"
+        v-model.trim='formFilters.district_title'
+        placeholder='Выберите из списка'
+        class='filter-form__select'
         clearable
         @change="validateField('district_title')"
-        @clear="clearFilter"
+        @clear='clearFilter'
       >
         <el-option
-          v-for="item in districts"
-          :key="item.okato"
-          :label="item.title"
-          :value="item.title">
+          v-for='item in districts'
+          :key='item.okato'
+          :label='item.title'
+          :value='item.title'>
         </el-option>
       </el-select>
     </el-form-item>
   </el-form>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
 import {
   defineComponent,
 } from '@vue/composition-api';
-import { rules } from '@/utils/formValidationRules'
-import { useFilters } from './composables/useFilters'
+import { rules } from '@/utils/formValidationRules';
+import { useFilters } from './composables/useFilters';
 
 export default defineComponent({
   name: 'FilterForm',
@@ -52,8 +56,8 @@ export default defineComponent({
       filterForm,
       districts,
       validateField,
-      clearFilter
-    } = useFilters(emit, root)
+      clearFilter,
+    } = useFilters(emit, root);
 
     return {
       formFilters,
@@ -61,13 +65,13 @@ export default defineComponent({
       rules,
       districts,
       validateField,
-      clearFilter
+      clearFilter,
     };
   },
 });
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='less'>
 .filter-form {
 
   &__select {
