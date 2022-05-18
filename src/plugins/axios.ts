@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import qs from 'qs'
+import qs from 'qs';
 
 const axios = Axios.create({
   baseURL: process.env.VUE_APP_HOST_TO_API,
@@ -7,11 +7,10 @@ const axios = Axios.create({
 
 axios.interceptors.request.use(
   (config) => {
-    config.paramsSerializer = (params) =>
-      qs.stringify(params, {
-        skipNulls: true,
-        arrayFormat: 'brackets',
-      });
+    config.paramsSerializer = (params) => qs.stringify(params, {
+      skipNulls: true,
+      arrayFormat: 'brackets',
+    });
 
     return config;
   },
@@ -20,7 +19,8 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
-  (response) =>  response.data,
-  (error) => Promise.reject(error.message));
+  (response) => response.data,
+  (error) => Promise.reject(error.message),
+);
 
 export default axios;

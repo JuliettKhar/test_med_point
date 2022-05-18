@@ -9,7 +9,7 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'home',
     component: HomeView,
-    props: true
+    props: true,
   },
 ];
 
