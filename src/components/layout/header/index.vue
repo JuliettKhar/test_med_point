@@ -1,8 +1,7 @@
 <template>
   <el-header class="app-header" height="auto">
     <div class="app-header__avatar-wrapper">
-      <el-avatar :size="70"
-                 src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
+      <el-avatar :size="70" :src="imgUrl"/>
       <div class="app-header__title-wrapper">
         <h1>Название компании</h1>
         <p>Слоган компании</p>
@@ -15,10 +14,19 @@
   </el-header>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api';
+
+export default defineComponent({
   name: 'AppHeader',
-};
+  setup() {
+    const imgUrl = 'https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png';
+
+    return {
+      imgUrl,
+    };
+  },
+});
 </script>
 
 <style scoped lang="scss">

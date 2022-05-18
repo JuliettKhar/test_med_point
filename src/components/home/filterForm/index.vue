@@ -1,21 +1,36 @@
 <template>
-  <el-form :model="formData" label-position="top" class="filter-form">
-    <el-form-item label="Название дороги">
-      <el-input v-model="formData.roadName"></el-input>
+  <el-form
+    ref="filterForm"
+    :model="formFilters"
+    :rules="rules"
+    label-position="top"
+    class="filter-form"
+  >
+    <el-form-item label="Название дороги" prop="title">
+      <el-input
+        v-model="formFilters.title"
+        clearable
+        @keyup.enter.native="validateField('title')"
+        @clear="clearFilter"
+      />
     </el-form-item>
-    <el-form-item label="РГН">
-      <el-input v-model="formData.rgn"></el-input>
+    <el-form-item label="РГН" prop="rgn">
+      <el-input v-model="formFilters.rgn" clearable @keyup.enter.native="validateField('rgn')" @clear="clearFilter"/>
     </el-form-item>
-    <el-form-item label="Городской округ">
+    <el-form-item label="Городской округ" prop="district_title">
       <el-select
-        v-model="formData.district"
+        v-model="formFilters.district_title"
         placeholder="Выберите из списка"
-        class="filter-form__select">
+        class="filter-form__select"
+        clearable
+        @change="validateField('district_title')"
+        @clear="clearFilter"
+      >
         <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
+          v-for="item in districts"
+          :key="item.okato"
+          :label="item.title"
+          :value="item.title">
         </el-option>
       </el-select>
     </el-form-item>
@@ -23,19 +38,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from '@vue/composition-api';
+import {
+  defineComponent,
+} from '@vue/composition-api';
+import { rules } from '@/utils/formValidationRules'
+import { useFilters } from './composables/useFilters'
 
 export default defineComponent({
   name: 'FilterForm',
-  setup() {
-    const formData = reactive({
-      roadName: '',
-      rgn: '',
-      district: '',
-    });
+  setup(_, { root, emit }) {
+    const {
+      formFilters,
+      filterForm,
+      districts,
+      validateField,
+      clearFilter
+    } = useFilters(emit, root)
 
     return {
-      formData,
+      formFilters,
+      filterForm,
+      rules,
+      districts,
+      validateField,
+      clearFilter
     };
   },
 });
@@ -48,6 +74,7 @@ export default defineComponent({
     width: 100%;
   }
 }
+
 ::v-deep .el-form-item__label {
   width: 100%;
   line-height: 20px;
