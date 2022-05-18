@@ -15,6 +15,10 @@ module.exports = {
   rules: {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
+    'import/prefer-default-export': 'off',
+    'no-param-reassign': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'camelcase': 'warn',
     "vue/attributes-order": [
       "error",
       {
